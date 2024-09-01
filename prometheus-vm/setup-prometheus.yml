@@ -2,3 +2,16 @@
 - hosts: all
   roles:
   - prometheus.prometheus.prometheus
+  vars:
+    prometheus_targets:
+      node:
+      - targets:
+        - "{{ target_node }}:9100"
+        labels:
+          env: demosite
+
+    prometheus_alertmanager_config:
+      - scheme: local_alertmanager
+        path_prefix: alertmanager/
+        static_configs:
+          - targets: ["127.0.0.1:9093"]
