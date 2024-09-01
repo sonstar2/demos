@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+  - prometheus.prometheus.alertmanager
+  vars:
+    alertmanager_version: latest
+    alertmanager_receivers:
+      - name: 'EDA'
+        webhook_configs:
+          - url: 'http://ansibleeda:5001/endpoint'
+    alertmanager_route:
+      group_by: [ alertname ]
+      repeat_interval: 8h
+      receiver: 'EDA'
