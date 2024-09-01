@@ -11,7 +11,6 @@
           env: demosite
 
     prometheus_alertmanager_config:
-      - scheme: local_alertmanager
-        path_prefix: alertmanager/
-        static_configs:
-          - targets: ["127.0.0.1:9093"]
+    - static_configs:
+      - targets: 
+        - localhost:9093

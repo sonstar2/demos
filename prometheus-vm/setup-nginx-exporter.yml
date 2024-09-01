@@ -2,3 +2,5 @@
 - hosts: all
   roles:
   - prometheus.prometheus.nginx_exporter
+  vars:
+    nginx_exporter_scrape_uri: "http://127.0.0.1:{{ nginx_port }}"
