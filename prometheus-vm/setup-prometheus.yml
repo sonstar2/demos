@@ -6,6 +6,6 @@
     prometheus_targets:
       node:
       - targets:
-        - localhost:9100
+        - "{{ target_node }}":9100
         labels:
           env: demosite
