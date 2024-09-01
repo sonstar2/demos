@@ -7,7 +7,7 @@
     alertmanager_receivers:
       - name: 'EDA'
         webhook_configs:
-          - url: 'http://ansibleeda:5001/endpoint'
+          - url: 'http://{{ eda_end_point }}/endpoint'
     alertmanager_route:
       group_by: [ alertname ]
       repeat_interval: 8h
