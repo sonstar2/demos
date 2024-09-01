@@ -36,8 +36,8 @@ prometheus_alert_rules:
       job: "storage"
       severity: critical
     annotations:
-      summary: "Storage full on instance {{ $labels.instance }}"
-      description: "The storage on instance {{ $labels.instance }} is almost full. Please investigate and take necessary actions." 
+      summary: 'Storage full on instance {{ $labels.instance }}'
+      description: 'The storage on instance {{ $labels.instance }} is almost full. Please investigate and take necessary actions.'
   - alert: RAMFullAlert
     expr: (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 < 10
     for: 5m
@@ -45,8 +45,8 @@ prometheus_alert_rules:
       job: "memory"
       severity: critical
     annotations:
-      summary: "RAM full on instance {{ $labels.instance }}"
-      description: "The RAM on instance {{ $labels.instance }} is almost full. Please investigate and take necessary actions."
+      summary: 'RAM full on instance {{ $labels.instance }}'
+      description: 'The RAM on instance {{ $labels.instance }} is almost full. Please investigate and take necessary actions.'
   - alert: SSHServerDownAlert
     expr: probe_ssh_connectivity_up == 0
     for: 1m
@@ -54,8 +54,8 @@ prometheus_alert_rules:
       job: "ssh"
       severity: critical
     annotations:
-      summary: "SSH server down on instance {{ $labels.instance }}"
-      description: "The SSH server on instance {{ $labels.instance }} is not responding. Please investigate and take necessary actions."
+      summary: 'SSH server down on instance {{ $labels.instance }}'
+      description: 'The SSH server on instance {{ $labels.instance }} is not responding. Please investigate and take necessary actions.'
 
   - alert: CPUFullAlert
     expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
@@ -64,8 +64,8 @@ prometheus_alert_rules:
       job: "cpu"
       severity: warning
     annotations:
-      summary: "CPU full on instance {{ $labels.instance }}"
-      description: "The CPU on instance {{ $labels.instance }} is almost fully utilized. Please investigate and take necessary actions."
+      summary: 'CPU full on instance {{ $labels.instance }}'
+      description: 'The CPU on instance {{ $labels.instance }} is almost fully utilized. Please investigate and take necessary actions.'
   - alert: SELinux
     expr: robe_ssh_connectivity_up == 0
     for: 5m
@@ -73,7 +73,7 @@ prometheus_alert_rules:
       job: "selinux"
       severity: critical
     annotations:
-      summary: "SELinux is permissive on instance {{ $labels.instance }}"
-      description: "The SELinux on instance {{ $labels.instance }} is Permissive. Please investigate and take necessary actions."
+      summary: 'SELinux is permissive on instance {{ $labels.instance }}'
+      description: 'The SELinux on instance {{ $labels.instance }} is Permissive. Please investigate and take necessary actions.'
 
 
